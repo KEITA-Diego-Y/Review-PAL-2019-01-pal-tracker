@@ -1,15 +1,41 @@
-plugins {
-    id 'java'
-    id 'org.springframework.boot' version '2.2.6.RELEASE'
+buildscript {
+    ext {
+        springBootVersion = "2.2.6.RELEASE"
+    }
+    repositories {
+        mavenCentral ()
+    }
+    dependencies {
+        classpath ("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+    }
 }
 
+//buildscript {
+//    ext {
+//        springBootVersion = "2.2.6.RELEASE"
+//    }
+//}
+
+plugins {
+    id "java"
+    // It's too much; id "org.springframework.boot" version "$springBootVersion" apply false
+}
+
+apply plugin: "org.springframework.boot"
+
+//subprojects {
+//    apply plugin: ""
+//}
+
 // You are correct!
-respositories {
+repositories {
     mavenCentral ()
 }
 
 // You are correct!
 dependencies {
     // compile ("group:name:version")
+    //deprecated;
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    //compileOnly("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
 }
